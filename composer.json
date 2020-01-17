@@ -27,12 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Eduardokum\\LaravelBoleto\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Eduardokum\\LaravelBoleto\\Tests\\": "tests"
+            "WilsonGlasser\\PhpBoleto\\": "src"
         }
     },
     "config": {
