@@ -1,8 +1,8 @@
 <?php
 
-namespace Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab240;
+namespace Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240;
 
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Detalhe as DetalheBase;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Detalhe as DetalheBase;
 
 interface Detalhe extends DetalheBase
 {

@@ -6,16 +6,15 @@
  * Time: 07:31
  */
 
-namespace Eduardokum\LaravelBoleto\Cnab\Retorno;
+namespace Wilsonglasser\PhpBoleto\Cnab\Retorno;
 
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab240\Detalhe as Detalhe240Contract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab240\Header as Header240Contract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab240\Trailer as Trailer240Contract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab400\Detalhe as Detalhe400Contract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab400\Trailer as Trailer400Contract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab400\Header as Header400Contract;
-use Illuminate\Support\Collection;
-use Eduardokum\LaravelBoleto\Util;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Detalhe as Detalhe240Contract;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Header as Header240Contract;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Trailer as Trailer240Contract;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Detalhe as Detalhe400Contract;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Trailer as Trailer400Contract;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Header as Header400Contract;
+use Wilsonglasser\PhpBoleto\Util;
 
 abstract class AbstractRetorno implements \Countable, \SeekableIterator
 {
@@ -87,7 +86,7 @@ abstract class AbstractRetorno implements \Countable, \SeekableIterator
             throw new \Exception("Arquivo: não existe");
         }
 
-        $r = new \ReflectionClass('\Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto');
+        $r = new \ReflectionClass('\Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto');
         $constantNames = $r->getConstants();
         $bancosDisponiveis = [];
         foreach ($constantNames as $constantName => $codigoBanco) {
@@ -141,11 +140,11 @@ abstract class AbstractRetorno implements \Countable, \SeekableIterator
     }
 
     /**
-     * @return Collection
+     * @return array
      */
     public function getDetalhes()
     {
-        return new Collection($this->detalhe);
+        return $this->detalhe;
     }
 
     /**

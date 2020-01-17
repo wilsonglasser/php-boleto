@@ -1,11 +1,10 @@
 <?php
 
-namespace Eduardokum\LaravelBoleto\Boleto\Render;
+namespace Wilsonglasser\PhpBoleto\Boleto\Render;
 
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Render\Pdf as PdfContract;
-use Eduardokum\LaravelBoleto\Util;
-use Illuminate\Support\Str;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Render\Pdf as PdfContract;
+use Wilsonglasser\PhpBoleto\Util;
 
 class Pdf extends AbstractPdf implements PdfContract
 {
@@ -14,28 +13,29 @@ class Pdf extends AbstractPdf implements PdfContract
     const OUTPUT_SAVE = 'F';
     const OUTPUT_STRING = 'S';
 
-    protected $PadraoFont = 'Arial';
+    private $PadraoFont = 'Arial';
     /**
      * @var BoletoContract[]
      */
-    protected $boleto = [];
+    private $boleto = array();
 
     /**
      * @var bool
      */
-    protected $print = false;
+    private $print = false;
 
     /**
      * @var bool
      */
-    protected $showInstrucoes = true;
+    private $showInstrucoes = true;
 
-    protected $desc = 3; // tamanho célula descrição
-    protected $cell = 4; // tamanho célula dado
-    protected $fdes = 6; // tamanho fonte descrição
-    protected $fcel = 8; // tamanho fonte célula
-    protected $small = 0.2; // tamanho barra fina
-    protected $totalBoletos = 0;
+
+    private $desc = 3; // tamanho célula descrição
+    private $cell = 4; // tamanho célula dado
+    private $fdes = 6; // tamanho fonte descrição
+    private $fcel = 8; // tamanho fonte célula
+    private $small = 0.2; // tamanho barra fina
+    private $totalBoletos = 0;
 
     public function __construct()
     {
@@ -367,26 +367,20 @@ class Pdf extends AbstractPdf implements PdfContract
     }
 
     /**
-     * @param string $texto
+     * @param      string $texto
      * @param integer $ln
      * @param integer $ln2
-     * @param $posicaoTexto
-     * @param $alinhamentoTexto
-     * @param $tamanho
      */
-    protected function traco($texto, $ln = null, $ln2 = null, $posicaoTexto = 1, $alinhamentoTexto = 'R', $tamanho = 261)
+    protected function traco($texto, $ln = null, $ln2 = null)
     {
         if ($ln == 1 || $ln) {
             $this->Ln($ln);
         }
         $this->SetFont($this->PadraoFont, '', $this->fdes);
-        if ($texto && $posicaoTexto !== -1) {
-            $this->Cell(0, 2, $this->_($texto), 0, 1, $alinhamentoTexto);
+        if ($texto) {
+            $this->Cell(0, 2, $this->_($texto), 0, 1, 'R');
         }
-        $this->Cell(0,  2, str_pad('-', $tamanho, ' -', STR_PAD_RIGHT), 0, 1);
-        if ($texto && $posicaoTexto === -1) {
-            $this->Cell(0, 2, $this->_($texto), 0, 1, $alinhamentoTexto);
-        }
+        $this->Cell(0, 2, str_pad('-', '261', ' -', STR_PAD_RIGHT), 0, 1);
         if ($ln2 == 1 || $ln2) {
             $this->Ln($ln2);
         }
@@ -480,7 +474,7 @@ class Pdf extends AbstractPdf implements PdfContract
             return $save_path;
         }
         if ($nameFile == null) {
-            $nameFile = Str::random(32);
+            $nameFile = str_random(32);
         }
         
         return $this->Output($nameFile . '.pdf', $dest, $this->print);
@@ -492,7 +486,7 @@ class Pdf extends AbstractPdf implements PdfContract
      *
      * @return int
      */
-    protected function listaLinhas($lista, $pulaLinha)
+    private function listaLinhas($lista, $pulaLinha)
     {
         foreach ($lista as $d) {
             $pulaLinha -= 2;

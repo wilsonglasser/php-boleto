@@ -1,8 +1,7 @@
 <?php
 
-namespace Eduardokum\LaravelBoleto\Contracts\Cnab;
+namespace Wilsonglasser\PhpBoleto\Contracts\Cnab;
 
-use Illuminate\Support\Collection;
 
 interface RetornoCnab240 extends Retorno
 {
@@ -17,7 +16,7 @@ interface RetornoCnab240 extends Retorno
     public function getBancoNome();
 
     /**
-     * @return Collection
+     * @return array
      */
     public function getDetalhes();
 

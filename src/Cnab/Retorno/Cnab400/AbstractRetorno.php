@@ -1,21 +1,16 @@
 <?php
-namespace Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400;
+namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400;
 
-use Eduardokum\LaravelBoleto\Util;
-use \Eduardokum\LaravelBoleto\Cnab\Retorno\AbstractRetorno as AbstractRetornoGeneric;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab400\Header as HeaderContract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab400\Detalhe as DetalheContract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab400\Trailer as TrailerContract;
-use Illuminate\Support\Collection;
+use Wilsonglasser\PhpBoleto\Cnab\Retorno\AbstractRetorno as AbstractRetornoGeneric;
 
 /**
  * Class AbstractRetorno
  *
- * @method  \Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400\Detalhe getDetalhe()
- * @method  \Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400\Header getHeader()
- * @method  \Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400\Trailer getTrailer()
- * @method  \Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400\Detalhe detalheAtual()
- * @package Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400
+ * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Detalhe getDetalhe()
+ * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Header getHeader()
+ * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Trailer getTrailer()
+ * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Detalhe detalheAtual()
+ * @package Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400
  */
 abstract class AbstractRetorno extends AbstractRetornoGeneric
 {
@@ -109,10 +104,10 @@ abstract class AbstractRetorno extends AbstractRetornoGeneric
         $array = [
             'header' => $this->header->toArray(),
             'trailer' => $this->trailer->toArray(),
-            'detalhes' => new Collection()
+            'detalhes' => []
         ];
         foreach ($this->detalhe as $detalhe) {
-            $array['detalhes']->push($detalhe->toArray());
+            $array['detalhes'][] = $detalhe->toArray();
         }
         return $array;
     }

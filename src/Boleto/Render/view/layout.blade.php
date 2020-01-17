@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Boletos</title>
     <style type="text/css">
-        {!! $css !!}
+        <?php echo $css ?>
     </style>
 </head>
 <body>

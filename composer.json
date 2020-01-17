@@ -1,23 +1,23 @@
 {
-    "name": "eduardokum/laravel-boleto",
-    "description": "Biblioteca com boletos para o laravel",
+    "name": "wilsonglasser/php-boleto",
+    "description": "Biblioteca com boletos para o php",
     "keywords": [
-        "eduardokum",
-        "laravel-boleto"
+        "wilsonglasser",
+        "php-boleto"
     ],
-    "homepage": "https://github.com/eduardokum/laravel-boleto",
+    "homepage": "https://github.com/wilsonglasser/php-boleto",
     "license": "MIT",
     "authors": [
         {
-            "name": "Eduardo Gusmão",
-            "email": "eduguscontra3@hotmail.com"
+            "name": "Wilson Glasser",
+            "email": "wilsonglasser@gmail.com"
         }
     ],
     "require": {
         "php": ">=5.5.0,<8.0",
         "ext-intl": "*",
+        "nesbot/carbon" : "^1.0",
         "ext-mbstring": "*",
-        "laravel/framework": "^5.0||^6.0",
         "neitanod/forceutf8": "^2.0",
         "setasign/fpdf": "^1.8"
     },

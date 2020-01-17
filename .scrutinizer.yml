@@ -1,5 +1,5 @@
 filter:
-    excluded_paths: [tests/*, exemplos/*, manuais/*]
+    excluded_paths: [exemplos/*]
 
 build:
     nodes:

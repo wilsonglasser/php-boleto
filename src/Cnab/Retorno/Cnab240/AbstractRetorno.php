@@ -1,19 +1,18 @@
 <?php
-namespace Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab240;
+namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240;
 
-use \Eduardokum\LaravelBoleto\Cnab\Retorno\AbstractRetorno as AbstractRetornoGeneric;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab240\HeaderLote as HeaderLoteContract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab240\TrailerLote as TrailerLoteContract;
-use Illuminate\Support\Collection;
+use Wilsonglasser\PhpBoleto\Cnab\Retorno\AbstractRetorno as AbstractRetornoGeneric;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\HeaderLote as HeaderLoteContract;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\TrailerLote as TrailerLoteContract;
 
 /**
  * Class AbstractRetorno
  *
- * @method  \Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab240\Detalhe getDetalhe()
- * @method  \Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab240\Header getHeader()
- * @method  \Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab240\Trailer getTrailer()
- * @method  \Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab240\Detalhe detalheAtual()
- * @package Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab240
+ * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240\Detalhe getDetalhe($i)
+ * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240\Header getHeader()
+ * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240\Trailer getTrailer()
+ * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240\Detalhe detalheAtual()
+ * @package Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240
  */
 abstract class AbstractRetorno extends AbstractRetornoGeneric
 {
@@ -160,11 +159,11 @@ abstract class AbstractRetorno extends AbstractRetornoGeneric
             'headerLote' => $this->headerLote->toArray(),
             'trailerLote' => $this->trailerLote->toArray(),
             'trailer' => $this->trailer->toArray(),
-            'detalhes' => new Collection()
+            'detalhes' => []
         ];
 
         foreach ($this->detalhe as $detalhe) {
-            $array['detalhes']->push($detalhe->toArray());
+            $array['detalhes'][] = $detalhe->toArray();
         }
         return $array;
     }
