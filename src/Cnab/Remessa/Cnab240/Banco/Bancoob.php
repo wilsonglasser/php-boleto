@@ -7,13 +7,13 @@
  * Time: 15:02
  */
 
-namespace Eduardokum\LaravelBoleto\Cnab\Remessa\Cnab240\Banco;
+namespace Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab240\Banco;
 
-use Eduardokum\LaravelBoleto\CalculoDV;
-use Eduardokum\LaravelBoleto\Cnab\Remessa\Cnab240\AbstractRemessa;
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Remessa as RemessaContract;
-use Eduardokum\LaravelBoleto\Util;
+use Wilsonglasser\PhpBoleto\CalculoDV;
+use Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab240\AbstractRemessa;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\Remessa as RemessaContract;
+use Wilsonglasser\PhpBoleto\Util;
 
 class Bancoob extends AbstractRemessa implements RemessaContract
 {

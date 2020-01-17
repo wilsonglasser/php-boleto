@@ -1,20 +1,20 @@
 <?php
 
-namespace Eduardokum\LaravelBoleto\Boleto;
+namespace Wilsonglasser\PhpBoleto\Boleto;
 
 use Carbon\Carbon;
-use Eduardokum\LaravelBoleto\Boleto\Render\Html;
-use Eduardokum\LaravelBoleto\Boleto\Render\Pdf;
-use Eduardokum\LaravelBoleto\Boleto\Render\PdfCaixa;
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto;
-use Eduardokum\LaravelBoleto\Contracts\Pessoa as PessoaContract;
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Eduardokum\LaravelBoleto\Util;
+use Wilsonglasser\PhpBoleto\Boleto\Render\Html;
+use Wilsonglasser\PhpBoleto\Boleto\Render\Pdf;
+use Wilsonglasser\PhpBoleto\Boleto\Render\PdfCaixa;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto;
+use Wilsonglasser\PhpBoleto\Contracts\Pessoa as PessoaContract;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use Wilsonglasser\PhpBoleto\Util;
 
 /**
  * Class AbstractBoleto
  *
- * @package Eduardokum\LaravelBoleto\Boleto
+ * @package Wilsonglasser\PhpBoleto\Boleto
  */
 abstract class AbstractBoleto implements BoletoContract
 {
@@ -549,7 +549,7 @@ abstract class AbstractBoleto implements BoletoContract
      *
      * @return AbstractBoleto
      */
-    public function setDataVencimento(Carbon $dataVencimento)
+    public function setDataVencimento($dataVencimento)
     {
         $this->dataVencimento = $dataVencimento;
 
@@ -573,7 +573,7 @@ abstract class AbstractBoleto implements BoletoContract
      *
      * @return AbstractBoleto
      */
-    public function setDataDesconto(Carbon $dataDesconto)
+    public function setDataDesconto($dataDesconto)
     {
         $this->dataDesconto = $dataDesconto;
 
@@ -597,7 +597,7 @@ abstract class AbstractBoleto implements BoletoContract
      *
      * @return AbstractBoleto
      */
-    public function setDataDocumento(Carbon $dataDocumento)
+    public function setDataDocumento($dataDocumento)
     {
         $this->dataDocumento = $dataDocumento;
 
@@ -787,7 +787,7 @@ abstract class AbstractBoleto implements BoletoContract
      *
      * @return AbstractBoleto
      */
-    public function setDataProcessamento(Carbon $dataProcessamento)
+    public function setDataProcessamento($dataProcessamento)
     {
         $this->dataProcessamento = $dataProcessamento;
 
@@ -830,7 +830,7 @@ abstract class AbstractBoleto implements BoletoContract
      * @return AbstractBoleto
      * @throws \Exception
      */
-    public function setInstrucoes(array $instrucoes)
+    public function setInstrucoes($instrucoes)
     {
         if (count($instrucoes) > 8) {
             throw new \Exception('Máximo de 8 instruções.');
@@ -858,7 +858,7 @@ abstract class AbstractBoleto implements BoletoContract
      * @return AbstractBoleto
      * @throws \Exception
      */
-    public function setInstrucoesImpressao(array $instrucoes_impressao)
+    public function setInstrucoesImpressao($instrucoes_impressao)
     {
         if (count($instrucoes_impressao) > 5) {
             throw new \Exception('Máximo de 5 instruções.');
@@ -907,7 +907,7 @@ abstract class AbstractBoleto implements BoletoContract
      * @return AbstractBoleto
      * @throws \Exception
      */
-    public function setDescricaoDemonstrativo(array $descricaoDemonstrativo)
+    public function setDescricaoDemonstrativo($descricaoDemonstrativo)
     {
         if (count($descricaoDemonstrativo) > 5) {
             throw new \Exception('Máximo de 5 demonstrativos.');

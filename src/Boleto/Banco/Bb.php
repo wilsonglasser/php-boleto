@@ -1,14 +1,14 @@
 <?php
-namespace Eduardokum\LaravelBoleto\Boleto\Banco;
+namespace Wilsonglasser\PhpBoleto\Boleto\Banco;
 
-use Eduardokum\LaravelBoleto\Boleto\AbstractBoleto;
-use Eduardokum\LaravelBoleto\CalculoDV;
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Eduardokum\LaravelBoleto\Util;
+use Wilsonglasser\PhpBoleto\Boleto\AbstractBoleto;
+use Wilsonglasser\PhpBoleto\CalculoDV;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use Wilsonglasser\PhpBoleto\Util;
 
 class Bb extends AbstractBoleto implements BoletoContract
 {
-    public function __construct(array $params = [])
+    public function __construct($params = [])
     {
         parent::__construct($params);
         $this->setCamposObrigatorios('numero', 'convenio', 'carteira');

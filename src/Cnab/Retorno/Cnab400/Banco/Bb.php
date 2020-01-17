@@ -1,11 +1,10 @@
 <?php
-namespace Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400\Banco;
+namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Banco;
 
-use Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400\AbstractRetorno;
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\RetornoCnab400;
-use Eduardokum\LaravelBoleto\Util;
-use Illuminate\Support\Arr;
+use Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\AbstractRetorno;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\RetornoCnab400;
+use Wilsonglasser\PhpBoleto\Util;
 
 class Bb extends AbstractRetorno implements RetornoCnab400
 {
@@ -212,7 +211,7 @@ class Bb extends AbstractRetorno implements RetornoCnab400
             ->setNumeroDocumento($this->rem(117, 126, $detalhe))
             ->setNumeroControle($this->rem(39, 63, $detalhe))
             ->setOcorrencia($this->rem(109, 110, $detalhe))
-            ->setOcorrenciaDescricao(Arr::get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
+            ->setOcorrenciaDescricao(Util::arrGet($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
             ->setDataOcorrencia($this->rem(111, 116, $detalhe))
             ->setDataVencimento($this->rem(147, 152, $detalhe))
             ->setDataCredito($this->rem(176, 181, $detalhe))
@@ -242,7 +241,7 @@ class Bb extends AbstractRetorno implements RetornoCnab400
             $d->setOcorrenciaTipo($d::OCORRENCIA_ALTERACAO);
         } elseif ($d->hasOcorrencia('03')) {
             $this->totais['erros']++;
-            $d->setError(Arr::get($this->rejeicoes, $this->rem(383, 392, $detalhe), 'Consulte seu Internet Banking'));
+            $d->setError(Util::arrGet($this->rejeicoes, $this->rem(383, 392, $detalhe), 'Consulte seu Internet Banking'));
         } else {
             $d->setOcorrenciaTipo($d::OCORRENCIA_OUTROS);
         }

@@ -1,11 +1,10 @@
 <?php
-namespace Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400\Banco;
+namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Banco;
 
-use Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400\AbstractRetorno;
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\RetornoCnab400;
-use Eduardokum\LaravelBoleto\Util;
-use Illuminate\Support\Arr;
+use Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\AbstractRetorno;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\RetornoCnab400;
+use Wilsonglasser\PhpBoleto\Util;
 
 class Sicredi extends AbstractRetorno implements RetornoCnab400
 {
@@ -236,7 +235,7 @@ class Sicredi extends AbstractRetorno implements RetornoCnab400
             ->setNumeroControle($this->rem(117, 126, $detalhe))
             ->setNumeroDocumento($this->rem(117, 126, $detalhe))
             ->setOcorrencia($this->rem(109, 110, $detalhe))
-            ->setOcorrenciaDescricao(Arr::get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
+            ->setOcorrenciaDescricao(Util::arrGet($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
             ->setDataOcorrencia($this->rem(111, 116, $detalhe))
             ->setDataVencimento($this->rem(147, 152, $detalhe))
             ->setValor(Util::nFloat($this->rem(153, 165, $detalhe), 2, false) / 100)
@@ -279,11 +278,11 @@ class Sicredi extends AbstractRetorno implements RetornoCnab400
         $errorsRetorno = str_split($stringErrors, 2) + array_fill(0, 5, '') + array_fill(0, 5, '');
         if (trim($stringErrors, '0') != '') {
             $error = [];
-            $error[] = Arr::get($this->rejeicoes, $errorsRetorno[0], '');
-            $error[] = Arr::get($this->rejeicoes, $errorsRetorno[1], '');
-            $error[] = Arr::get($this->rejeicoes, $errorsRetorno[2], '');
-            $error[] = Arr::get($this->rejeicoes, $errorsRetorno[3], '');
-            $error[] = Arr::get($this->rejeicoes, $errorsRetorno[4], '');
+            $error[] = Util::arrGet($this->rejeicoes, $errorsRetorno[0], '');
+            $error[] = Util::arrGet($this->rejeicoes, $errorsRetorno[1], '');
+            $error[] = Util::arrGet($this->rejeicoes, $errorsRetorno[2], '');
+            $error[] = Util::arrGet($this->rejeicoes, $errorsRetorno[3], '');
+            $error[] = Util::arrGet($this->rejeicoes, $errorsRetorno[4], '');
 
             $error = array_filter($error);
 

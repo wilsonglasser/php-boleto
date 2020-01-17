@@ -1,11 +1,11 @@
 <?php
-namespace Eduardokum\LaravelBoleto\Boleto\Banco;
+namespace Wilsonglasser\PhpBoleto\Boleto\Banco;
 
-use Eduardokum\LaravelBoleto\Boleto\AbstractBoleto;
-use Eduardokum\LaravelBoleto\CalculoDV;
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto;
-use Eduardokum\LaravelBoleto\Util;
+use Wilsonglasser\PhpBoleto\Boleto\AbstractBoleto;
+use Wilsonglasser\PhpBoleto\CalculoDV;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto;
+use Wilsonglasser\PhpBoleto\Util;
 
 class Bradesco  extends AbstractBoleto implements BoletoContract
 {

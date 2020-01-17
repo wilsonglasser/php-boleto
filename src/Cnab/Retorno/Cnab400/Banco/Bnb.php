@@ -1,11 +1,10 @@
 <?php
-namespace Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400\Banco;
+namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Banco;
 
-use Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab400\AbstractRetorno;
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\RetornoCnab400;
-use Eduardokum\LaravelBoleto\Util;
-use Illuminate\Support\Arr;
+use Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\AbstractRetorno;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\RetornoCnab400;
+use Wilsonglasser\PhpBoleto\Util;
 
 class Bnb extends AbstractRetorno implements RetornoCnab400
 {
@@ -115,7 +114,7 @@ class Bnb extends AbstractRetorno implements RetornoCnab400
             ->setNumeroDocumento($this->rem(117, 126, $detalhe))
             ->setNumeroControle($this->rem(38, 62, $detalhe))
             ->setOcorrencia($this->rem(109, 110, $detalhe))
-            ->setOcorrenciaDescricao(Arr::get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
+            ->setOcorrenciaDescricao(Util::arrGet($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
             ->setDataOcorrencia($this->rem(111, 116, $detalhe))
             ->setDataVencimento($this->rem(147, 152, $detalhe))
             ->setDataCredito($dataCredito)

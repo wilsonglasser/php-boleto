@@ -1,11 +1,11 @@
 <?php
-namespace Eduardokum\LaravelBoleto\Cnab\Retorno\Cnab240;
+namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240;
 
 use Carbon\Carbon;
-use Eduardokum\LaravelBoleto\Contracts\Cnab\Retorno\Cnab240\Detalhe as DetalheContract;
-use Eduardokum\LaravelBoleto\Contracts\Pessoa as PessoaContract;
-use Eduardokum\LaravelBoleto\MagicTrait;
-use Eduardokum\LaravelBoleto\Util;
+use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Detalhe as DetalheContract;
+use Wilsonglasser\PhpBoleto\Contracts\Pessoa as PessoaContract;
+use Wilsonglasser\PhpBoleto\MagicTrait;
+use Wilsonglasser\PhpBoleto\Util;
 
 class Detalhe implements DetalheContract
 {

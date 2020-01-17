@@ -1,5 +1,5 @@
 <?php
-namespace Eduardokum\LaravelBoleto;
+namespace Wilsonglasser\PhpBoleto;
 
 trait MagicTrait
 {

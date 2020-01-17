@@ -1,5 +1,5 @@
 <?php
-namespace Eduardokum\LaravelBoleto\Contracts\Cnab;
+namespace Wilsonglasser\PhpBoleto\Contracts\Cnab;
 
 interface Retorno extends Cnab
 {

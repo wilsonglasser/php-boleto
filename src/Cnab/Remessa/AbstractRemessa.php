@@ -1,10 +1,10 @@
 <?php
-namespace Eduardokum\LaravelBoleto\Cnab\Remessa;
+namespace Wilsonglasser\PhpBoleto\Cnab\Remessa;
 
 use Carbon\Carbon;
-use Eduardokum\LaravelBoleto\Util;
-use Eduardokum\LaravelBoleto\Contracts\Pessoa as PessoaContract;
-use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use Wilsonglasser\PhpBoleto\Util;
+use Wilsonglasser\PhpBoleto\Contracts\Pessoa as PessoaContract;
+use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
 
 abstract class AbstractRemessa
 {
@@ -452,11 +452,11 @@ abstract class AbstractRemessa
     /**
      * Retorna os detalhes do arquivo
      *
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
     protected function getDetalhes()
     {
-        return collect($this->aRegistros[self::DETALHE]);
+        return $this->aRegistros[self::DETALHE];
     }
 
     /**
