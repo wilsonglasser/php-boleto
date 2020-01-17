@@ -1,10 +1,10 @@
 <?php
 
-namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240;
+namespace WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab240;
 
 use Carbon\Carbon;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\HeaderLote as HeaderLoteContract;
-use Wilsonglasser\PhpBoleto\MagicTrait;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\HeaderLote as HeaderLoteContract;
+use WilsonGlasser\PhpBoleto\MagicTrait;
 
 class HeaderLote implements HeaderLoteContract
 {

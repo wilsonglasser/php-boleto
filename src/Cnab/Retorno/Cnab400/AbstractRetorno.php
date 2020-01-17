@@ -1,16 +1,16 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400;
+namespace WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab400;
 
-use Wilsonglasser\PhpBoleto\Cnab\Retorno\AbstractRetorno as AbstractRetornoGeneric;
+use WilsonGlasser\PhpBoleto\Cnab\Retorno\AbstractRetorno as AbstractRetornoGeneric;
 
 /**
  * Class AbstractRetorno
  *
- * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Detalhe getDetalhe()
- * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Header getHeader()
- * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Trailer getTrailer()
- * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Detalhe detalheAtual()
- * @package Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400
+ * @method  \WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab400\Detalhe getDetalhe()
+ * @method  \WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab400\Header getHeader()
+ * @method  \WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab400\Trailer getTrailer()
+ * @method  \WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab400\Detalhe detalheAtual()
+ * @package WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab400
  */
 abstract class AbstractRetorno extends AbstractRetornoGeneric
 {

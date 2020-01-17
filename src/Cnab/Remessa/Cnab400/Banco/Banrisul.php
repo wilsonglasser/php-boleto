@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab400\Banco;
+namespace WilsonGlasser\PhpBoleto\Cnab\Remessa\Cnab400\Banco;
 
-use Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab400\AbstractRemessa;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Remessa as RemessaContract;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Cnab\Remessa\Cnab400\AbstractRemessa;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Remessa as RemessaContract;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Banrisul extends AbstractRemessa implements RemessaContract
 {

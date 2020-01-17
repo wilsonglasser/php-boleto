@@ -1,10 +1,10 @@
 <?php
 
-namespace Wilsonglasser\PhpBoleto\Boleto\Render;
+namespace WilsonGlasser\PhpBoleto\Boleto\Render;
 
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Render\Pdf as PdfContract;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Render\Pdf as PdfContract;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Pdf extends AbstractPdf implements PdfContract
 {
@@ -476,7 +476,7 @@ class Pdf extends AbstractPdf implements PdfContract
         if ($nameFile == null) {
             $nameFile = str_random(32);
         }
-        
+
         return $this->Output($nameFile . '.pdf', $dest, $this->print);
     }
 

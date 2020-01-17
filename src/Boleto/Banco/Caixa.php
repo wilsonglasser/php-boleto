@@ -1,10 +1,10 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Boleto\Banco;
+namespace WilsonGlasser\PhpBoleto\Boleto\Banco;
 
-use Wilsonglasser\PhpBoleto\Boleto\AbstractBoleto;
-use Wilsonglasser\PhpBoleto\CalculoDV;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Boleto\AbstractBoleto;
+use WilsonGlasser\PhpBoleto\CalculoDV;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Caixa  extends AbstractBoleto implements BoletoContract
 {
@@ -112,8 +112,8 @@ class Caixa  extends AbstractBoleto implements BoletoContract
      * @return [type] [description]
      */
     public function getAgenciaCodigoBeneficiario(){
-        return $this->getAgencia() . ' / ' . 
-               $this->getCodigoCliente() . '-' . 
+        return $this->getAgencia() . ' / ' .
+               $this->getCodigoCliente() . '-' .
                Util::modulo11($this->getCodigoCliente());
     }
 

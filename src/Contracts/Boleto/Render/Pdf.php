@@ -1,5 +1,5 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Contracts\Boleto\Render;
+namespace WilsonGlasser\PhpBoleto\Contracts\Boleto\Render;
 
 interface Pdf
 {

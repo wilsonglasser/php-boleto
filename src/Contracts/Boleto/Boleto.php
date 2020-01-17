@@ -1,7 +1,7 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Contracts\Boleto;
+namespace WilsonGlasser\PhpBoleto\Contracts\Boleto;
 
-use Wilsonglasser\PhpBoleto\Contracts\Pessoa as PessoaContract;
+use WilsonGlasser\PhpBoleto\Contracts\Pessoa as PessoaContract;
 
 interface Boleto
 {

@@ -1,9 +1,9 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400;
+namespace WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab400;
 
 use Carbon\Carbon;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Header as HeaderContract;
-use Wilsonglasser\PhpBoleto\MagicTrait;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Header as HeaderContract;
+use WilsonGlasser\PhpBoleto\MagicTrait;
 
 class Header implements HeaderContract
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Wilsonglasser\PhpBoleto;
+namespace WilsonGlasser\PhpBoleto;
 
 trait MagicTrait
 {

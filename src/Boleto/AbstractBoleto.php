@@ -1,20 +1,20 @@
 <?php
 
-namespace Wilsonglasser\PhpBoleto\Boleto;
+namespace WilsonGlasser\PhpBoleto\Boleto;
 
 use Carbon\Carbon;
-use Wilsonglasser\PhpBoleto\Boleto\Render\Html;
-use Wilsonglasser\PhpBoleto\Boleto\Render\Pdf;
-use Wilsonglasser\PhpBoleto\Boleto\Render\PdfCaixa;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto;
-use Wilsonglasser\PhpBoleto\Contracts\Pessoa as PessoaContract;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Boleto\Render\Html;
+use WilsonGlasser\PhpBoleto\Boleto\Render\Pdf;
+use WilsonGlasser\PhpBoleto\Boleto\Render\PdfCaixa;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto;
+use WilsonGlasser\PhpBoleto\Contracts\Pessoa as PessoaContract;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Util;
 
 /**
  * Class AbstractBoleto
  *
- * @package Wilsonglasser\PhpBoleto\Boleto
+ * @package WilsonGlasser\PhpBoleto\Boleto
  */
 abstract class AbstractBoleto implements BoletoContract
 {

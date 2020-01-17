@@ -1,9 +1,9 @@
 <?php
 
-namespace Wilsonglasser\PhpBoleto\Boleto\Render;
+namespace WilsonGlasser\PhpBoleto\Boleto\Render;
 
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Render\Html as HtmlContract;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Render\Html as HtmlContract;
 
 class Html implements HtmlContract
 {

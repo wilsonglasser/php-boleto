@@ -1,11 +1,11 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240;
+namespace WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab240;
 
 use Carbon\Carbon;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Detalhe as DetalheContract;
-use Wilsonglasser\PhpBoleto\Contracts\Pessoa as PessoaContract;
-use Wilsonglasser\PhpBoleto\MagicTrait;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Detalhe as DetalheContract;
+use WilsonGlasser\PhpBoleto\Contracts\Pessoa as PessoaContract;
+use WilsonGlasser\PhpBoleto\MagicTrait;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Detalhe implements DetalheContract
 {
@@ -582,7 +582,7 @@ class Detalhe implements DetalheContract
 
         return $this;
     }
-    
+
      /**
   * @return string
   */

@@ -1,5 +1,5 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400;
+namespace WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400;
 
 interface Header
 {

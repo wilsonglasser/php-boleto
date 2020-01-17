@@ -1,9 +1,9 @@
 <?php
 
-namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240;
+namespace WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab240;
 
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Trailer as TrailerContract;
-use Wilsonglasser\PhpBoleto\MagicTrait;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Trailer as TrailerContract;
+use WilsonGlasser\PhpBoleto\MagicTrait;
 
 class Trailer implements TrailerContract
 {

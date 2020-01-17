@@ -1,6 +1,6 @@
 <?php
 require 'autoload.php';
-$beneficiario = new \Wilsonglasser\PhpBoleto\Pessoa(
+$beneficiario = new \WilsonGlasser\PhpBoleto\Pessoa(
     [
         'nome'      => 'ACME',
         'endereco'  => 'Rua um, 123',
@@ -11,7 +11,7 @@ $beneficiario = new \Wilsonglasser\PhpBoleto\Pessoa(
     ]
 );
 
-$pagador = new \Wilsonglasser\PhpBoleto\Pessoa(
+$pagador = new \WilsonGlasser\PhpBoleto\Pessoa(
     [
         'nome'      => 'Cliente',
         'endereco'  => 'Rua um, 123',
@@ -23,7 +23,7 @@ $pagador = new \Wilsonglasser\PhpBoleto\Pessoa(
     ]
 );
 
-$boleto = new Wilsonglasser\PhpBoleto\Boleto\Banco\Bnb(
+$boleto = new WilsonGlasser\PhpBoleto\Boleto\Banco\Bnb(
     [
         'logo'                   => realpath(__DIR__ . '/../logos/') . DIRECTORY_SEPARATOR . '004.png',
         'dataVencimento'         => \Carbon\Carbon::createFromDate(2017, 04, 03),
@@ -45,6 +45,6 @@ $boleto = new Wilsonglasser\PhpBoleto\Boleto\Banco\Bnb(
     ]
 );
 
-$pdf = new Wilsonglasser\PhpBoleto\Boleto\Render\Pdf();
+$pdf = new WilsonGlasser\PhpBoleto\Boleto\Render\Pdf();
 $pdf->addBoleto($boleto);
 $pdf->gerarBoleto($pdf::OUTPUT_SAVE, __DIR__ . DIRECTORY_SEPARATOR . 'arquivos' . DIRECTORY_SEPARATOR . 'bnb.pdf');

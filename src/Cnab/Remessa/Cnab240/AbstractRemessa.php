@@ -1,7 +1,7 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab240;
+namespace WilsonGlasser\PhpBoleto\Cnab\Remessa\Cnab240;
 
-use Wilsonglasser\PhpBoleto\Cnab\Remessa\AbstractRemessa as AbstractRemessaGeneric;
+use WilsonGlasser\PhpBoleto\Cnab\Remessa\AbstractRemessa as AbstractRemessaGeneric;
 use ForceUTF8\Encoding;
 
 abstract class AbstractRemessa extends AbstractRemessaGeneric

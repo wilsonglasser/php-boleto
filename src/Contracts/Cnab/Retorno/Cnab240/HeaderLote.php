@@ -1,6 +1,6 @@
 <?php
 
-namespace Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240;
+namespace WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240;
 
 interface HeaderLote
 {

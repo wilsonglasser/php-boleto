@@ -1,5 +1,5 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Boleto\Render;
+namespace WilsonGlasser\PhpBoleto\Boleto\Render;
 
 abstract class AbstractPdf extends \FPDF
 {

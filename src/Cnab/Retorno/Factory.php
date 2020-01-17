@@ -1,9 +1,9 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Cnab\Retorno;
+namespace WilsonGlasser\PhpBoleto\Cnab\Retorno;
 
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Factory
 {

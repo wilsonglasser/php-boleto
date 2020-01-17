@@ -1,9 +1,9 @@
 <?php
 
-namespace Wilsonglasser\PhpBoleto;
+namespace WilsonGlasser\PhpBoleto;
 
 use Carbon\Carbon;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
 
 /**
  * Class Util
@@ -12,7 +12,7 @@ use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
  * @TODO validar processar
  * @TODO validar float nos numeros
  *
- * @package Wilsonglasser\PhpBoleto
+ * @package WilsonGlasser\PhpBoleto
  */
 final class Util
 {

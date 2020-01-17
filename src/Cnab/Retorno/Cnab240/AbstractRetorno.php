@@ -1,18 +1,18 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240;
+namespace WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab240;
 
-use Wilsonglasser\PhpBoleto\Cnab\Retorno\AbstractRetorno as AbstractRetornoGeneric;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\HeaderLote as HeaderLoteContract;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\TrailerLote as TrailerLoteContract;
+use WilsonGlasser\PhpBoleto\Cnab\Retorno\AbstractRetorno as AbstractRetornoGeneric;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\HeaderLote as HeaderLoteContract;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\TrailerLote as TrailerLoteContract;
 
 /**
  * Class AbstractRetorno
  *
- * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240\Detalhe getDetalhe($i)
- * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240\Header getHeader()
- * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240\Trailer getTrailer()
- * @method  \Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240\Detalhe detalheAtual()
- * @package Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240
+ * @method  \WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab240\Detalhe getDetalhe($i)
+ * @method  \WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab240\Header getHeader()
+ * @method  \WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab240\Trailer getTrailer()
+ * @method  \WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab240\Detalhe detalheAtual()
+ * @package WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab240
  */
 abstract class AbstractRetorno extends AbstractRetornoGeneric
 {

@@ -1,9 +1,9 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400;
+namespace WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab400;
 
 use Carbon\Carbon;
-use Wilsonglasser\PhpBoleto\MagicTrait;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Detalhe as DetalheContract;
+use WilsonGlasser\PhpBoleto\MagicTrait;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Detalhe as DetalheContract;
 
 class Detalhe implements DetalheContract
 {

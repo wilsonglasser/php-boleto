@@ -1,5 +1,5 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Contracts;
+namespace WilsonGlasser\PhpBoleto\Contracts;
 
 interface Pessoa
 {

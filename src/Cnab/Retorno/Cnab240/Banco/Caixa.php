@@ -1,11 +1,11 @@
 <?php
 
-namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240\Banco;
+namespace WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab240\Banco;
 
-use Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab240\AbstractRetorno;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\RetornoCnab240;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab240\AbstractRetorno;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\RetornoCnab240;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Caixa extends AbstractRetorno implements RetornoCnab240
 {

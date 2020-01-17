@@ -1,11 +1,11 @@
 <?php
 
-namespace Wilsonglasser\PhpBoleto\Boleto\Banco;
+namespace WilsonGlasser\PhpBoleto\Boleto\Banco;
 
-use Wilsonglasser\PhpBoleto\Boleto\AbstractBoleto;
-use Wilsonglasser\PhpBoleto\CalculoDV;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Boleto\AbstractBoleto;
+use WilsonGlasser\PhpBoleto\CalculoDV;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Santander extends AbstractBoleto implements BoletoContract
 {

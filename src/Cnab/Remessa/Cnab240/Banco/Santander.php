@@ -12,13 +12,13 @@
  * Time: 23:11
  */
 
-namespace Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab240\Banco;
+namespace WilsonGlasser\PhpBoleto\Cnab\Remessa\Cnab240\Banco;
 
-use Wilsonglasser\PhpBoleto\CalculoDV;
-use Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab240\AbstractRemessa;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Remessa as RemessaContract;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\CalculoDV;
+use WilsonGlasser\PhpBoleto\Cnab\Remessa\Cnab240\AbstractRemessa;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Remessa as RemessaContract;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Santander extends AbstractRemessa implements RemessaContract
 {
@@ -227,7 +227,7 @@ class Santander extends AbstractRemessa implements RemessaContract
             $this->add(155, 169, Util::formatCnab('9', Util::onlyNumbers($boleto->getSacadorAvalista()->getDocumento()), 15));
             $this->add(170, 209, Util::formatCnab('X', $boleto->getSacadorAvalista()->getNome(), 30));
         }
-        
+
         return $this;
     }
 

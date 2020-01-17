@@ -1,6 +1,6 @@
 <?php
 require 'autoload.php';
-$beneficiario = new \Wilsonglasser\PhpBoleto\Pessoa(
+$beneficiario = new \WilsonGlasser\PhpBoleto\Pessoa(
     [
         'nome'      => 'ACME',
         'endereco'  => 'Rua um, 123',
@@ -11,7 +11,7 @@ $beneficiario = new \Wilsonglasser\PhpBoleto\Pessoa(
     ]
 );
 
-$pagador = new \Wilsonglasser\PhpBoleto\Pessoa(
+$pagador = new \WilsonGlasser\PhpBoleto\Pessoa(
     [
         'nome'      => 'Cliente',
         'endereco'  => 'Rua um, 123',
@@ -23,7 +23,7 @@ $pagador = new \Wilsonglasser\PhpBoleto\Pessoa(
     ]
 );
 
-$boleto = new Wilsonglasser\PhpBoleto\Boleto\Banco\Bancoob(
+$boleto = new WilsonGlasser\PhpBoleto\Boleto\Banco\Bancoob(
     [
         'logo'                   => realpath(__DIR__ . '/../logos/') . DIRECTORY_SEPARATOR . '756.png',
         'dataVencimento'         => new \Carbon\Carbon(),
@@ -45,7 +45,7 @@ $boleto = new Wilsonglasser\PhpBoleto\Boleto\Banco\Bancoob(
     ]
 );
 
-$remessa = new \Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab400\Banco\Bancoob(
+$remessa = new \WilsonGlasser\PhpBoleto\Cnab\Remessa\Cnab400\Banco\Bancoob(
     [
         'agencia'       => 1111,
         'conta'         => 22222,

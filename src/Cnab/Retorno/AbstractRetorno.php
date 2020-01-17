@@ -6,15 +6,15 @@
  * Time: 07:31
  */
 
-namespace Wilsonglasser\PhpBoleto\Cnab\Retorno;
+namespace WilsonGlasser\PhpBoleto\Cnab\Retorno;
 
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Detalhe as Detalhe240Contract;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Header as Header240Contract;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Trailer as Trailer240Contract;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Detalhe as Detalhe400Contract;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Trailer as Trailer400Contract;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Header as Header400Contract;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Detalhe as Detalhe240Contract;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Header as Header240Contract;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab240\Trailer as Trailer240Contract;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Detalhe as Detalhe400Contract;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Trailer as Trailer400Contract;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno\Cnab400\Header as Header400Contract;
+use WilsonGlasser\PhpBoleto\Util;
 
 abstract class AbstractRetorno implements \Countable, \SeekableIterator
 {
@@ -86,7 +86,7 @@ abstract class AbstractRetorno implements \Countable, \SeekableIterator
             throw new \Exception("Arquivo: não existe");
         }
 
-        $r = new \ReflectionClass('\Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto');
+        $r = new \ReflectionClass('\WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto');
         $constantNames = $r->getConstants();
         $bancosDisponiveis = [];
         foreach ($constantNames as $constantName => $codigoBanco) {

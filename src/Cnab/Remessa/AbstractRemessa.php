@@ -1,10 +1,10 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Cnab\Remessa;
+namespace WilsonGlasser\PhpBoleto\Cnab\Remessa;
 
 use Carbon\Carbon;
-use Wilsonglasser\PhpBoleto\Util;
-use Wilsonglasser\PhpBoleto\Contracts\Pessoa as PessoaContract;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Contracts\Pessoa as PessoaContract;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
 
 abstract class AbstractRemessa
 {

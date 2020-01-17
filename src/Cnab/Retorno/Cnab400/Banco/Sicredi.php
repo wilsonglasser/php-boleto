@@ -1,10 +1,10 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\Banco;
+namespace WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab400\Banco;
 
-use Wilsonglasser\PhpBoleto\Cnab\Retorno\Cnab400\AbstractRetorno;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\RetornoCnab400;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Cnab\Retorno\Cnab400\AbstractRetorno;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\RetornoCnab400;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Sicredi extends AbstractRetorno implements RetornoCnab400
 {
@@ -230,7 +230,7 @@ class Sicredi extends AbstractRetorno implements RetornoCnab400
     protected function processarDetalhe(array $detalhe)
     {
         $d = $this->detalheAtual();
-		
+
         $d->setNossoNumero($this->rem(48, 62, $detalhe))
             ->setNumeroControle($this->rem(117, 126, $detalhe))
             ->setNumeroDocumento($this->rem(117, 126, $detalhe))

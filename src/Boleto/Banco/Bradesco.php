@@ -1,11 +1,11 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Boleto\Banco;
+namespace WilsonGlasser\PhpBoleto\Boleto\Banco;
 
-use Wilsonglasser\PhpBoleto\Boleto\AbstractBoleto;
-use Wilsonglasser\PhpBoleto\CalculoDV;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Boleto\AbstractBoleto;
+use WilsonGlasser\PhpBoleto\CalculoDV;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Bradesco  extends AbstractBoleto implements BoletoContract
 {

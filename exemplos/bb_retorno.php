@@ -1,7 +1,7 @@
 <?php
 require 'autoload.php';
-$retorno = \Wilsonglasser\PhpBoleto\Cnab\Retorno\Factory::make(__DIR__ . DIRECTORY_SEPARATOR . 'arquivos' . DIRECTORY_SEPARATOR . 'bb.ret');
+$retorno = \WilsonGlasser\PhpBoleto\Cnab\Retorno\Factory::make(__DIR__ . DIRECTORY_SEPARATOR . 'arquivos' . DIRECTORY_SEPARATOR . 'bb.ret');
 $retorno->processar();
 
 echo $retorno->getBancoNome();
-dd($retorno->getDetalhes());
+echo '<pre>',print_r($retorno->getDetalhes());

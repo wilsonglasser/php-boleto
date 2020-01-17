@@ -1,6 +1,6 @@
 <?php
 
-namespace Wilsonglasser\PhpBoleto\Contracts\Cnab;
+namespace WilsonGlasser\PhpBoleto\Contracts\Cnab;
 
 
 interface RetornoCnab240 extends Retorno

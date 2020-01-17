@@ -1,6 +1,6 @@
 <?php
 
-namespace Wilsonglasser\PhpBoleto\Contracts\Cnab\Retorno;
+namespace WilsonGlasser\PhpBoleto\Contracts\Cnab\Retorno;
 
 interface Detalhe
 {

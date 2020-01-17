@@ -1,11 +1,11 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab400\Banco;
+namespace WilsonGlasser\PhpBoleto\Cnab\Remessa\Cnab400\Banco;
 
 use Carbon\Carbon;
-use Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab400\AbstractRemessa;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Remessa as RemessaContract;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\Cnab\Remessa\Cnab400\AbstractRemessa;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Remessa as RemessaContract;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Sicredi extends AbstractRemessa implements RemessaContract
 {

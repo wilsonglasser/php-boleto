@@ -1,12 +1,12 @@
 <?php
-namespace Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab400\Banco;
+namespace WilsonGlasser\PhpBoleto\Cnab\Remessa\Cnab400\Banco;
 
 use DeepCopyTest\B;
-use Wilsonglasser\PhpBoleto\CalculoDV;
-use Wilsonglasser\PhpBoleto\Cnab\Remessa\Cnab400\AbstractRemessa;
-use Wilsonglasser\PhpBoleto\Contracts\Cnab\Remessa as RemessaContract;
-use Wilsonglasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
-use Wilsonglasser\PhpBoleto\Util;
+use WilsonGlasser\PhpBoleto\CalculoDV;
+use WilsonGlasser\PhpBoleto\Cnab\Remessa\Cnab400\AbstractRemessa;
+use WilsonGlasser\PhpBoleto\Contracts\Cnab\Remessa as RemessaContract;
+use WilsonGlasser\PhpBoleto\Contracts\Boleto\Boleto as BoletoContract;
+use WilsonGlasser\PhpBoleto\Util;
 
 class Bradesco extends AbstractRemessa implements RemessaContract
 {
