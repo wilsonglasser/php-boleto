@@ -13,27 +13,19 @@
             "email": "wilsonglasser@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "WilsonGlasser\\PhpBoleto\\": "src",
+            "WilsonGlasser\\PhpBoleto\\Tests\\": "tests"
+        }
+    },
     "require": {
-        "php": ">=5.6.0,<8.0",
+        "php": ">=5.6",
         "ext-intl": "*",
         "nesbot/carbon" : "^1.0",
         "ext-mbstring": "*",
         "neitanod/forceutf8": "^2.0",
         "setasign/fpdf": "^1.8"
-    },
-    "require-dev": {
-        "phpunit/phpunit": ">=6.0,<9.0",
-        "orchestra/testbench": "^3.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "WilsonGlasser\\PhpBoleto\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "WilsonGlasser\\PhpBoleto\\Tests\\": "tests/"
-        }
-    },
-    "minimum-stability": "dev"
+    }
 }
