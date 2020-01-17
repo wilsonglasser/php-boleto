@@ -145,45 +145,11 @@ class Html implements HtmlContract
     /**
      * função para gerar o boleto
      *
+     * @param bool Imprime junto com layout
      * @return string
      * @throws \Exception
      */
-    public function gerarBoleto()
-    {
-        if (count($this->boleto) == 0) {
-            throw new \Exception('Nenhum Boleto adicionado');
-        }
-
-        extract([
-            'boletos' => $this->boleto
-        ]);
-
-        require($this->viewPath . 'boleto.php');
-        $boleto = ob_get_clean();
-
-        return $this->gerarLayout($boleto);
-
-    }
-
-    public function gerarLayout()
-    {
-        ob_start();
-        extract([
-            'css' => $this->writeCss(),
-            'imprimir_carregamento' => (bool)$this->print,
-            'mostrar_instrucoes' => (bool)$this->showInstrucoes
-        ]);
-        require($this->viewPath . 'layout.php');
-        return ob_get_clean();
-    }
-
-    /**
-     * função para gerar o carne
-     *
-     * @return string
-     * @throws \Exception
-     */
-    public function gerarCarne()
+    public function gerarBoleto($useLayout = true)
     {
         if (count($this->boleto) == 0) {
             throw new \Exception('Nenhum Boleto adicionado');
@@ -192,11 +158,52 @@ class Html implements HtmlContract
         ob_start();
         extract([
             'boletos' => $this->boleto,
+            'mostrar_instrucoes' => (bool)$this->showInstrucoes
+        ]);
+
+        require($this->viewPath . 'boleto.php');
+        $boleto = ob_get_clean();
+
+        if ($useLayout)
+            return $this->gerarLayout($boleto);
+        return $boleto;
+    }
+
+    public function gerarLayout($boleto)
+    {
+        ob_start();
+        extract([
+            'css' => $this->writeCss(),
+            'imprimir_carregamento' => (bool)$this->print
+        ]);
+        require($this->viewPath . 'layout.php');
+        return ob_get_clean();
+    }
+
+    /**
+     * função para gerar o carne
+     *
+     * @param bool
+     * @return string
+     * @throws \Exception
+     */
+    public function gerarCarne($useLayout = true)
+    {
+        if (count($this->boleto) == 0) {
+            throw new \Exception('Nenhum Boleto adicionado');
+        }
+
+        ob_start();
+        extract([
+            'boletos' => $this->boleto,
+            'mostrar_instrucoes' => (bool)$this->showInstrucoes
         ]);
 
         require($this->viewPath . 'carne.php');
         $boleto = ob_get_clean();
 
-        return $this->gerarLayout($boleto);
+        if ($useLayout)
+            return $this->gerarLayout($boleto);
+        return $boleto;
     }
 }
