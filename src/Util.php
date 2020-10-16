@@ -1061,4 +1061,9 @@ final class Util
         }
         return trim($appended);
     }
+
+    public static function ascii($string)
+    {
+        return preg_replace('/[`^~\'"]/', null, str_replace('?', '', iconv('UTF-8', 'ASCII//TRANSLIT', $string)));
+    }
 }

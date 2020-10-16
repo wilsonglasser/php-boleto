@@ -85,6 +85,22 @@ class Bradesco  extends AbstractBoleto implements BoletoContract
      * @var boolean
      */
     protected $mostrarEnderecoFichaCompensacao = true;
+
+
+    /**
+     * Data da multa
+     *
+     * @var \Carbon\Carbon
+     */
+    protected $dataMulta;
+
+    /**
+     * Data dos juros
+     *
+     * @var \Carbon\Carbon
+     */
+    protected $dataJuros;
+
     /**
      * Gera o Nosso Número.
      *
@@ -185,5 +201,55 @@ class Bradesco  extends AbstractBoleto implements BoletoContract
     public function getCip()
     {
         return Util::numberFormatGeral($this->cip, 3);
+    }
+
+    /**
+     * Define a data de limite de multa
+     *
+     * @param  \Carbon\Carbon $dataMulta
+     *
+     * @return AbstractBoleto
+     */
+    public function setDataMulta($dataMulta)
+    {
+        $this->dataMulta = $dataMulta;
+
+        return $this;
+    }
+
+
+    /**
+     * Retorna a data de multa
+     *
+     * @return string
+     */
+    public function getDataMulta()
+    {
+        return $this->dataMulta ? $this->dataMulta : $this->getDataVencimento();
+    }
+
+    /**
+     * Define a data de limite de juros
+     *
+     * @param  \Carbon\Carbon $dataJuros
+     *
+     * @return AbstractBoleto
+     */
+    public function setDataJuros($dataJuros)
+    {
+        $this->dataJuros = $dataJuros;
+
+        return $this;
+    }
+
+
+    /**
+     * Retorna a data de juros
+     *
+     * @return string
+     */
+    public function getDataJuros()
+    {
+        return $this->dataJuros ? $this->dataJuros : $this->getDataVencimento();
     }
 }

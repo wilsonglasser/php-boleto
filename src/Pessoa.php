@@ -35,6 +35,23 @@ class Pessoa implements PessoaContract
     protected $documento;
 
     /**
+     * @var string
+     */
+    protected $numero;
+    /**
+     * @var string
+     */
+    protected $complemento;
+    /**
+     * @var string
+     */
+    protected $telefone;
+    /**
+     * @var string
+     */
+    protected $email;
+
+    /**
      * @var boolean
      */
     protected $dda = false;
@@ -50,7 +67,12 @@ class Pessoa implements PessoaContract
      *
      * @return Pessoa
      */
-    public static function create($nome, $documento, $endereco = null, $bairro = null, $cep = null, $cidade = null, $uf = null)
+    public static function create($nome, $documento, $endereco = null, $bairro = null, $cep = null, $cidade = null, $uf = null,
+        $numero = null,
+        $complemento = null,
+        $telefone = null, 
+        $email = null
+    )
     {
         return new static([
             'nome' => $nome,
@@ -60,6 +82,10 @@ class Pessoa implements PessoaContract
             'uf' => $uf,
             'cidade' => $cidade,
             'documento' => $documento,
+            'numero' => $numero,
+            'complemento' => $complemento,
+            'telefone' => $telefone,
+            'email' => $email
         ]);
     }
 
@@ -244,6 +270,105 @@ class Pessoa implements PessoaContract
     {
         return $this->uf;
     }
+
+    /**
+     * Define o numero
+     *
+     * @param string $numero
+     *
+     * @return Pessoa
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+
+        return $this;
+    }
+    /**
+     * Retorna o numero
+     *
+     * @return string
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * Define o complemento
+     *
+     * @param string $complemento
+     *
+     * @return Pessoa
+     */
+    public function setComplemento($complemento)
+    {
+        $this->complemento = $complemento;
+
+
+        return $this;
+    }
+    /**
+     * Retorna o complemento
+     *
+     * @return string
+     */
+    public function getComplemento()
+    {
+        return $this->complemento;
+    }
+
+    /**
+     * Define o telefone
+     *
+     * @param string $telefone
+     *
+     * @return Pessoa
+     */
+    public function setTelefone($telefone)
+    {
+        $this->telefone = $telefone;
+
+
+        return $this;
+    }
+    /**
+     * Retorna o telefone
+     *
+     * @return string
+     */
+    public function getTelefone()
+    {
+        return $this->telefone;
+    }
+
+    /**
+     * Define o email
+     *
+     * @param string $email
+     *
+     * @return Pessoa
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+
+        return $this;
+    }
+    /**
+     * Retorna o email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+
+
     /**
      * Retorna o nome e o documento formatados
      *
@@ -296,7 +421,7 @@ class Pessoa implements PessoaContract
      */
     public function getEnderecoCompleto()
     {
-        $dados = array_filter(array($this->getEndereco(), $this->getBairro(), $this->getCidade(), $this->getUf(), $this->getCep()));
+        $dados = array_filter(array($this->getEndereco(), $this->getNumero(), $this->getComplemento(), $this->getBairro(), $this->getCidade(), $this->getUf(), $this->getCep()));
         return implode(' - ', $dados);
     }
 
@@ -325,10 +450,14 @@ class Pessoa implements PessoaContract
         return [
             'nome' => $this->getNome(),
             'endereco' => $this->getEndereco(),
+            'numero' => $this->getNumero(),
+            'complemento' => $this->getComplemento(),
             'bairro' => $this->getBairro(),
             'cep' => $this->getCep(),
             'uf' => $this->getUf(),
             'cidade' => $this->getCidade(),
+            'email' => $this->getEmail(),
+            'telefone' => $this->getTelefone(),
             'documento' => $this->getDocumento(),
             'nome_documento' => $this->getNomeDocumento(),
             'endereco2' => $this->getCepCidadeUf(),
