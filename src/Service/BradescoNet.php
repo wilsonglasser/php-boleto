@@ -373,7 +373,7 @@ class BradescoNet extends AbstractService implements ServiceContract
                 $retorno = preg_replace('/, }/i', '}', $retorno);
                 $retorno = json_decode($retorno);
                 if (!empty($retorno->cdErro)) {
-                    throw new \Exception($retorno->cdErro, trim($retorno->msgErro));
+                    throw new \Exception(trim($retorno->msgErro), $retorno->cdErro);
                 }
 
                 return $retorno;
