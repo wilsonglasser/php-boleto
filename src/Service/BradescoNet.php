@@ -2,6 +2,7 @@
 
 namespace WilsonGlasser\PhpBoleto\Service;
 
+use WilsonGlasser\PhpBoleto\Contracts\Service\ServiceContract;
 use WilsonGlasser\PhpBoleto\Boleto\Banco\Bradesco;
 use WilsonGlasser\PhpBoleto\Certificado;
 use GuzzleHttp\Client;
@@ -10,6 +11,93 @@ use WilsonGlasser\PhpBoleto\Util;
 
 class BradescoNet extends AbstractService implements ServiceContract
 {
+    protected static $defaultBankSlip = [
+        // const values
+        "cdBanco" => "237",
+        "cdTipoAcesso" => "2",
+        "tpRegistro" => "1",
+        "cdTipoContrato" => "48",
+        "clubBanco" => "2269651",
+        "tpVencimento" => "0",
+
+        // empty values
+        "nuSequenciaContrato" => "0",
+        "eNuSequenciaContrato" => "0",
+        "cdProduto" => "0",
+        "nuTitulo" => "0",
+        "tpProtestoAutomaticoNegativacao" => "0",
+        "prazoProtestoAutomaticoNegativacao" => "0",
+        "controleParticipante" => "",
+        "cdPagamentoParcial" => "",
+        "qtdePagamentoParcial" => "0",
+        "percentualJuros" => "0",
+        "vlJuros" => "0",
+        "qtdeDiasJuros" => "0",
+        "percentualMulta" => "0",
+        "vlMulta" => "0",
+        "qtdeDiasMulta" => "0",
+        "percentualDesconto1" => "0",
+        "vlDesconto1" => "0",
+        "dataLimiteDesconto1" => "",
+        "percentualDesconto2" => "0",
+        "vlDesconto2" => "0",
+        "dataLimiteDesconto2" => "",
+        "percentualDesconto3" => "0",
+        "vlDesconto3" => "0",
+        "dataLimiteDesconto3" => "",
+        "prazoBonificacao" => "0",
+        "percentualBonificacao" => "0",
+        "vlBonificacao" => "0",
+        "dtLimiteBonificacao" => "",
+        "vlAbatimento" => "0",
+        "vlIOF" => "0",
+        "endEletronicoPagador" => "",
+        "nomeSacadorAvalista" => "",
+        "logradouroSacadorAvalista" => "",
+        "nuLogradouroSacadorAvalista" => "0",
+        "complementoLogradouroSacadorAvalista" => '',
+        "cepSacadorAvalista" => "0",
+        "complementoCepSacadorAvalista" => "0",
+        "bairroSacadorAvalista" => "",
+        "municipioSacadorAvalista" => "",
+        "ufSacadorAvalista" => "",
+        "cdIndCpfcnpjSacadorAvalista" => "0",
+        "nuCpfcnpjSacadorAvalista" => "0",
+        "endEletronicoSacadorAvalista" => ""
+    ];
+
+    protected static $textFields = [
+        'nomePagador',
+        'logradouroPagador',
+        'complementoLogradouroPagador',
+        'bairroPagador',
+        'municipioPagador',
+        'ufPagador',
+        'nomeSacadorAvalista',
+        'logradouroSacadorAvalista',
+        'complementoLogradouroSacadorAvalista',
+        'bairroSacadorAvalista',
+        'municipioSacadorAvalista',
+        'ufSacadorAvalista'
+    ];
+
+    protected static $clipTextields = [
+        ['nuCliente', 10],
+        ['controleParticipante', 25],
+        ['nomePagador', 70],
+        ['logradouroPagador', 40],
+        ['complementoLogradouroPagador', 15],
+        ['bairroPagador', 40],
+        ['municipioPagador', 30],
+        ['ufPagador', 2],
+        ['nomeSacadorAvalista', 40],
+        ['logradouroSacadorAvalista', 40],
+        ['complementoLogradouroSacadorAvalista', 15],
+        ['bairroSacadorAvalista', 40],
+        ['municipioSacadorAvalista', 40],
+        ['ufSacadorAvalista', 2]
+    ];
+
     private $homologacao;
     private $boleto;
 
@@ -85,7 +173,7 @@ class BradescoNet extends AbstractService implements ServiceContract
      */
     public function getNossoNumero()
     {
-        return $this->boleto->getNossoNumero();
+        return ltrim($this->boleto->getNumero(), '0');
     }
 
     /**
@@ -107,9 +195,14 @@ class BradescoNet extends AbstractService implements ServiceContract
     /**
      * @return string
      */
-    private function getAgencia()
+    private function getAgencia($semDigito = false)
     {
-        return $this->boleto->getAgencia();
+        $agencia = $this->boleto->getAgencia();
+        if ($semDigito)  {
+            list($agencia, $digito) = explode('-', $agencia);
+        }
+        
+        return $agencia;
     }
 
     /**
@@ -157,7 +250,7 @@ class BradescoNet extends AbstractService implements ServiceContract
      */
     private function getNumeroNegociacao()
     {
-        return $this->getAgencia().str_pad($this->getConta(), 14, "0", STR_PAD_LEFT);
+        return str_pad(Util::onlyNumbers($this->getAgencia(true)), 4, "0", STR_PAD_LEFT).str_pad(Util::onlyNumbers($this->getConta()), 14, "0", STR_PAD_LEFT);
     }
 
     /**
@@ -190,76 +283,37 @@ class BradescoNet extends AbstractService implements ServiceContract
             $cnpj = Util::onlyNumbers($benefeciario->getDocumento());
 
             $arr->nuCPFCNPJ = $benefeciario->getTipoDocumento() === 'CNPJ' ? substr($cnpj, 0, 8) : null;
-            $arr->filialCPFCNPJ = $benefeciario->getTipoDocumento() === 'CNPJ' ? substr($cnpj, 8, 4) : null;
+            $arr->filialCPFCNPJ = $benefeciario->getTipoDocumento() === 'CNPJ' ? substr($cnpj, 8, 4) : 0;
             $arr->ctrlCPFCNPJ = $benefeciario->getTipoDocumento() === 'CNPJ' ? substr($cnpj, 12, 2) : null;
             $arr->cdTipoAcesso = '2';
-            $arr->clubBanco = '0';
-            $arr->cdTipoContrato = '0';
-            $arr->nuSequenciaContrato = '0';
-            $arr->idProduto = (string)$this->getCarteira();
+            $arr->idProduto = (string) $this->getCarteira();
             $arr->nuNegociacao = $this->getNumeroNegociacao();
             $arr->cdBanco = '237';
-            $arr->eNuSequenciaContrato = '0';
             $arr->tpRegistro = '1';
-            $arr->cdProduto = '0';
-            $arr->nuTitulo = (string)$this->getNossoNumero();
+
+            $arr->nuTitulo = str_pad((string) $this->getNossoNumero(), 11, '0', STR_PAD_LEFT);
             $arr->nuCliente = (string)$this->getNossoNumero();
             $arr->dtEmissaoTitulo = $this->getEmissao()->format('d.m.Y');
             $arr->dtVencimentoTitulo = $this->getVencimento()->format('d.m.Y');
-            $arr->tpVencimento = '0';
             $arr->vlNominalTitulo = (string)number_format($this->getValor(), 2, '', '');
-            $arr->cdEspecieTitulo = '99';
-            $arr->tpProtestoAutomaticoNegativacao = '0';
-            $arr->prazoProtestoAutomaticoNegativacao = '0';
-            $arr->controleParticipante = '';
-            $arr->cdPagamentoParcial = '';
-            $arr->qtdePagamentoParcial = '0';
-
-            $arr->percentualDesconto1 = '0';
-            $arr->vlDesconto1 = '0';
-            $arr->dataLimiteDesconto1 = '';
-            $arr->percentualDesconto2 = '0';
-            $arr->vlDesconto2 = '0';
-            $arr->dataLimiteDesconto2 = '';
-            $arr->percentualDesconto3 = '0';
-            $arr->vlDesconto3 = '0';
-            $arr->dataLimiteDesconto3 = '';
-
-            $arr->prazoBonificacao = '0';
-            $arr->percentualBonificacao = '0';
-            $arr->vlBonificacao = '0';
-            $arr->dtLimiteBonificacao = '';
-            $arr->vlAbatimento = '0';
-            $arr->vlIOF = '0';
-
-
+            $arr->cdEspecieTitulo = '02';
             
             $pagador = $this->boleto->getPagador();
-            $arr->nomePagador = substr(Util::ascii($pagador->getNome()), 0, 40);
-            $arr->logradouroPagador = substr(Util::ascii($pagador->getEndereco()), 0, 40);
-            $arr->nuLogradouroPagador = (string)$pagador->getNumero();
-            $arr->complementoLogradouroPagador = substr(Util::ascii($pagador->getComplemento()), 0, 15);
+            $arr->nomePagador = substr(Util::normalizeChars($pagador->getNome()), 0, 70);
+            $arr->logradouroPagador = substr(Util::normalizeChars($pagador->getEndereco()), 0, 40);
+            $arr->nuLogradouroPagador = (string) substr($pagador->getNumero(), 0, 10);
+            if (!empty($pagador->getComplemento()))
+                $arr->complementoLogradouroPagador = (string) substr(Util::normalizeChars($pagador->getComplemento()), 0, 15);
+            else
+                $arr->complementoLogradouroPagador = null;
+
             $arr->cepPagador = substr($pagador->getCep(), 0, 5);
             $arr->complementoCepPagador = substr($pagador->getCep(), 6, 3);
-            $arr->bairroPagador = substr(Util::ascii($pagador->getBairro()), 0, 40);
-            $arr->municipioPagador = substr(Util::ascii($pagador->getCidade()), 0, 30);
-            $arr->ufPagador = substr(Util::ascii($pagador->getUf()), 0, 2);
+            $arr->bairroPagador = substr(Util::normalizeChars($pagador->getBairro()), 0, 40);
+            $arr->municipioPagador = substr(Util::normalizeChars($pagador->getCidade()), 0, 30);
+            $arr->ufPagador = substr(Util::normalizeChars($pagador->getUf()), 0, 2);
             $arr->cdIndCpfcnpjPagador = $pagador->getTipoDocumento() === 'CPF' ? '1' : '2';
-            $arr->nuCpfcnpjPagador = Util::onlyNumbers($pagador->getDocumento());
-            $arr->endEletronicoPagador = substr(Util::ascii($pagador->getEmail()), 0, 50);
-            $arr->nomeSacadorAvalista = '';
-            $arr->logradouroSacadorAvalista = '';
-            $arr->nuLogradouroSacadorAvalista = '0';
-            $arr->complementoLogradouroSacadorAvalista = '';
-            $arr->cepSacadorAvalista = '0';
-            $arr->complementoCepSacadorAvalista = '0';
-            $arr->bairroSacadorAvalista = '';
-            $arr->municipioSacadorAvalista = '';
-            $arr->ufSacadorAvalista = '';
-            $arr->cdIndCpfcnpjSacadorAvalista = '0';
-            $arr->nuCpfcnpjSacadorAvalista = '0';
-            $arr->endEletronicoSacadorAvalista = '';
-
+            $arr->nuCpfcnpjPagador = str_pad(Util::onlyNumbers($pagador->getDocumento()), 14, '0', STR_PAD_LEFT);
 
             $multa = $this->getMulta();
             if ($multa > 0) {
@@ -268,25 +322,17 @@ class BradescoNet extends AbstractService implements ServiceContract
                     STR_PAD_LEFT);
                 $arr->vlMulta = '0';
                 $arr->qtdeDiasMulta = $interval_multa;
-            } else {
-                $arr->percentualMulta = '0';
-                $arr->vlMulta = '0';
-                $arr->qtdeDiasMulta = '0';
             }
 
 
             $juros = $this->getJuros();
-            if ($juros > 0) {
-                $interval_juros = date_diff($this->getVencimento(), $this->boleto->getDataJuros());
+            if ($juros > 0) {                
+                $interval_juros = abs($this->getVencimento()->diffInDays($$this->boleto->getDataJuros()));
 
                 $arr->percentualJuros = str_pad(number_format($juros, 5, '', ''), 8, "0", STR_PAD_LEFT);
                 $arr->vlJuros = '0';
                 $arr->qtdeDiasJuros = $interval_juros;
 
-            } else {
-                $arr->percentualJuros = '0';
-                $arr->vlJuros = '0';
-                $arr->qtdeDiasJuros = '0';
             }
 
             if ($this->getDesconto() > 0) {
@@ -300,9 +346,8 @@ class BradescoNet extends AbstractService implements ServiceContract
                 
             }
 
-
-            $json = json_encode($arr);
-
+            $json = json_encode(self::fixAll($arr));
+			
             $base64 = $this->certificado->signText($json);
 
             if ($this->homologacao) {
@@ -310,6 +355,7 @@ class BradescoNet extends AbstractService implements ServiceContract
             } else {
                 $url = 'https://cobranca.bradesconetempresa.b.br/ibpjregistrotitulows/registrotitulo';
             }
+            echo $url;
             $client = new Client(['verify' => false]);
             $res = $client->request('POST',
                 $url, [
@@ -318,11 +364,18 @@ class BradescoNet extends AbstractService implements ServiceContract
 
             if ($res->getStatusCode() === 200) {
                 $retorno = $res->getBody()->getContents();
+
                 $doc = new \DOMDocument();
                 $doc->loadXML($retorno);
                 $retorno = $doc->getElementsByTagName('return')->item(0)->nodeValue;
+                
+                
                 $retorno = preg_replace('/, }/i', '}', $retorno);
                 $retorno = json_decode($retorno);
+
+                echo '<pre>',print_r($retorno);
+                exit;
+
                 if (!empty($retorno->cdErro)) {
                     throw new \Exception($retorno->cdErro, trim($retorno->msgErro));
                 }
@@ -331,10 +384,80 @@ class BradescoNet extends AbstractService implements ServiceContract
             }
 
         } catch (\RequestException $e) {
-            echo $e->getMessage().PHP_EOL;;
+            echo $e->getMessage().PHP_EOL;
         } catch (\Exception $e) {
-            echo $e->getMessage().PHP_EOL;;
+            echo $e->getMessage().PHP_EOL;
         }
 
+    }
+
+    public static function mergeWithDefaultData(array &$data)
+    {
+        $data = array_merge(static::$defaultBankSlip, $data);
+    }
+
+    public static function formatData(array &$data)
+    {
+        foreach(static::$textFields as $field) {
+            if (!isset($data[$field]) && !empty($data[$field])) 
+                continue;
+            $data[$field] = preg_replace("/[^0-9a-z \-]/i", '', $data[$field]);
+        }
+
+        foreach(static::$clipTextields as $rule => $clip) {
+            if (!isset($data[$field]) || strlen($data[$field]) <= $clip) 
+                continue;
+            $data[$field] = substr($data[$field], 0, $clip);
+        }
+    }
+
+    public static function changeNullToEmpty(array &$data)
+    {
+        array_walk($data, function(&$item, $key) {
+            if ($item === null) {
+                $item = "";
+            }
+        });
+    }
+
+    public static function changeNumericToString(array &$data)
+    {
+        array_walk($data, function(&$item, $key) {
+            if (is_float($item) || is_int($item)) {
+                $item = (string) $item;
+            }
+        });
+    }
+
+    public static function setCustomerType(array &$data)
+    {
+        if (!isset($data['cdIndCpfcnpjPagador']))
+            return;
+
+        if (!isset($data['nuCpfcnpjPagador'])) 
+            return;
+
+        $data['cdIndCpfcnpjPagador'] = substr($data['nuCpfcnpjPagador'], 0, 3) === '000' ? "1" : "2";
+    }
+
+    public static function fixAll($data)
+    {
+        $data = (array) $data;
+        // Per Bradesco API specs, all non-used fields must be
+        // sent anyways but with their default values (0 or "")
+        static::mergeWithDefaultData($data);
+
+        // Format currency, date, text  and "CPF/CNPJ" fields to API specs
+        static::formatData($data);
+
+        // Bradesco API does not accept null, only empty
+        static::changeNullToEmpty($data);
+
+        // Bradesco API does not accept integer or float, only string
+        static::changeNumericToString($data);
+
+        // Automatically fill "cdIndCpfcnpjPagador" field
+        static::setCustomerType($data);
+        return $data;
     }
 }

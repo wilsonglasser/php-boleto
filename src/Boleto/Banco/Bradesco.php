@@ -108,6 +108,7 @@ class Bradesco  extends AbstractBoleto implements BoletoContract
      */
     protected function gerarNossoNumero()
     {
+		
         return Util::numberFormatGeral($this->getNumero(), 11)
             . CalculoDV::bradescoNossoNumero($this->getCarteira(), $this->getNumero());
     }
