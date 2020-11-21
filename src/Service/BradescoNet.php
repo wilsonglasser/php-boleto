@@ -355,7 +355,7 @@ class BradescoNet extends AbstractService implements ServiceContract
             } else {
                 $url = 'https://cobranca.bradesconetempresa.b.br/ibpjregistrotitulows/registrotitulo';
             }
-            echo $url;
+			
             $client = new Client(['verify' => false]);
             $res = $client->request('POST',
                 $url, [
@@ -372,10 +372,6 @@ class BradescoNet extends AbstractService implements ServiceContract
                 
                 $retorno = preg_replace('/, }/i', '}', $retorno);
                 $retorno = json_decode($retorno);
-
-                echo '<pre>',print_r($retorno);
-                exit;
-
                 if (!empty($retorno->cdErro)) {
                     throw new \Exception($retorno->cdErro, trim($retorno->msgErro));
                 }
